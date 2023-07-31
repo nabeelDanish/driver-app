@@ -1,0 +1,8 @@
+/* Map.styles.css */
+
+/* Set the map container size */
+.map-container {
+    width: 100%;
+    height: 400px;
+    /* Adjust the height as needed */
+}

@@ -1,0 +1,35 @@
+.card body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.card table {
+    width: 100%;
+}
+
+.card td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.card tr:last-child td {
+    border-bottom: none;
+}

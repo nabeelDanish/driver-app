@@ -1,5 +1,5 @@
 import './styles.css'
-import { timeAgo } from '../../../lib/util'
+import { timeAgo } from '../../lib/util'
 
 const OrderCard = ({ orderData }) => {
     return (

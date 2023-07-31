@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getDarkstoreOrders, getDriverData, pickOrders } from '../../lib/api'
-import OrderCard from './OrderCard/OrderCard';
+import { OrderCard } from '../../components'
 import { useStyles } from './styles';
 
 const CurrentOrderCard = ({ driverData, setDriverData, currentOrderSelected }) => {

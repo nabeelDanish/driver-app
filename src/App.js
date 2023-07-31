@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Navbar } from './components';
+import { Grid, Navbar } from './layouts';
 import { DriverCard, AllOrders, CurrentOrderCard } from './views'
 import { getRandomCoordinatesInDubai } from './lib/util';
 import { updateDriverLocation } from './lib/api';

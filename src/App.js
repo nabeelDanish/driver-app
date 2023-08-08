@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Navbar } from './layouts';
-import { DriverCard, AllOrders, CurrentOrderCard, DriverView } from './views'
-import { getRandomCoordinatesInDubai } from './lib/util';
-import { updateDriverLocation } from './lib/api';
+import React from 'react';
+import { Navbar } from './layouts';
+import { DriverView } from './views'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
+
     // Building Layout
     return (
         <div>
-            <Navbar />
             <Router>
+                <Navbar />
                 <Routes>
                     <Route path="/" exact element={<DriverView />} />
+                    <Route path="/darkstore" exact element={<div>Darkstore</div>} />
                 </Routes>
             </Router>
         </div>

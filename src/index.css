@@ -22,7 +22,7 @@ p {
 
 /* Links */
 a {
-    color: #1e88e5;
+    color: #f4df08;
     /* Google Material UI primary color */
     text-decoration: none;
 }
@@ -34,8 +34,8 @@ a:hover {
 /* Buttons */
 button {
     cursor: pointer;
-    background-color: #1e88e5;
-    color: #ffffff;
+    background-color: #f4df08;
+    color: black;
     border: none;
     border-radius: 4px;
     padding: 8px 16px;
@@ -43,7 +43,7 @@ button {
 }
 
 button:hover {
-    background-color: #1565c0;
+    background-color: #dccc14;
     /* Darker shade on hover */
 }
 
@@ -77,7 +77,7 @@ textarea {
 
 /* Colors (customize as needed) */
 .primary-color {
-    background-color: #1e88e5;
+    background-color: #f4df08;
     color: #ffffff;
 }
 
@@ -94,4 +94,17 @@ textarea {
 .error-color {
     background-color: #e53935;
     color: #ffffff;
+}
+
+/* index.css */
+ul li a {
+    color: black
+}
+
+ul li a:hover {
+    color: #00a8ff;
+}
+
+ul li a.active {
+    color: #00a8ff;
 }

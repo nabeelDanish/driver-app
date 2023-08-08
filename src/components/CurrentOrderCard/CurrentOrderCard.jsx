@@ -68,7 +68,7 @@ const CurrentOrderCard = ({ driverData, setDriverData, currentOrderSelected, set
             return null
 
         return (
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h3>You have no orders assigned!</h3>
                 <br />
                 <p>Select orders that you want to pick up</p>

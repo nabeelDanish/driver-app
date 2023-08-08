@@ -8,6 +8,8 @@
 .card-2 {
     display: flex;
     gap: 1rem;
+    flex-direction: row;
+    align-items: center;
 }
 
 .card-2 p {

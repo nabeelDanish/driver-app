@@ -19,8 +19,8 @@ export const useStyles = makeStyles({
         marginBottom: '1rem',
     },
     button: {
-        background: '#007BFF',
-        color: '#fff',
+        background: '#f4df08',
+        color: 'black',
         border: 'none',
         padding: '0.5rem 1rem',
         borderRadius: '4px',

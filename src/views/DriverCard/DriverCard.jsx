@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { getDriverData } from '../../lib/api'
+import React, { useState } from 'react';
+import { changeDriverStatus, getDriverData } from '../../lib/api'
 import { useStyles } from './styles';
 import { MapComponent, ProfileCard } from '../../components';
 
@@ -11,6 +11,12 @@ const DriverCard = ({ driverCode, setDriverCode, driverData, setDriverData, driv
         await getDriverData(driverCode, setDriverData, setError, setDriverLocation);
     };
 
+    const changeStatus = async () => {
+        const newStatus = driverData.driver.status == "AVAILABLE" ? "OFFLINE" : "AVAILABLE"
+        await changeDriverStatus(driverCode, newStatus);
+        await getDriverData(driverCode, setDriverData, setError, setDriverLocation);
+    }
+
     const renderDriverData = () => {
         if (error) {
             return <div className={classes.error}>{error}</div>;
@@ -20,6 +26,20 @@ const DriverCard = ({ driverCode, setDriverCode, driverData, setDriverData, driv
             return (
                 <>
                     <ProfileCard profileData={driverData.driver} />
+                    {
+                        driverData.driver.status == "AVAILABLE" || driverData.driver.status == "OFFLINE"
+                            ?
+                            <button onClick={changeStatus}>Go
+                                {driverData.driver.status == "AVAILABLE" ? " Offline" : " Available"}
+                            </button>
+                            : ''
+                    }
+                    {
+                        driverData.driver.status == "RETURNING"
+                            ?
+                            <button onClick={changeStatus}>Go Available</button>
+                            : ''
+                    }
                     {driverLocation ? <MapComponent driverLocation={driverLocation} /> : ""}
                 </>
             );

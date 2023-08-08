@@ -17,9 +17,7 @@ const App = () => {
     useEffect(() => {
         // This function will be called after every render of the component
         const intervalId = setInterval(async () => {
-            console.log("called!")
-            if (driverLocation != null) {
-                console.log("changing location!")
+            if (driverLocation != null && driverData?.driver?.status != "OFFLINE") {
                 const { latitude, longitude } = getRandomCoordinatesInDubai();
                 await updateDriverLocation(driverCode, { latitude, longitude })
                 setDriverLocation({ latitude: latitude, longitude, longitude })
@@ -30,7 +28,7 @@ const App = () => {
         return () => {
             clearInterval(intervalId);
         };
-    }, [driverLocation]);
+    }, [driverData, driverLocation]);
 
 
     // Building Layout

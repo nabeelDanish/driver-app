@@ -80,3 +80,19 @@ export const deliverOrder = async (driverCode, orderCode) => {
         return false
     }
 }
+
+export const changeDriverStatus = async (driverCode, status) => {
+    try {
+        const headers = {
+            'X-forwarded-user': driverCode,
+        };
+
+        // Simulate the HTTP GET request response
+        const response = await axios.post(baseUrl + '/driver/status', { status }, { headers });
+
+        return response.status == 200
+    } catch (error) {
+        console.error('Error batch picking:', error);
+        return false
+    }
+}

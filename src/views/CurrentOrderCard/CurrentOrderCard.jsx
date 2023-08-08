@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { getDarkstoreOrders, getDriverData, pickOrders } from '../../lib/api'
+import { getDarkstoreOrders, getDriverData, pickOrders, deliverOrder } from '../../lib/api'
 import { OrderCard } from '../../components'
 import { useStyles } from './styles';
 
-const CurrentOrderCard = ({ driverData, setDriverData, currentOrderSelected }) => {
+const CurrentOrderCard = ({ driverData, setDriverData, currentOrderSelected, setDriverLocation }) => {
     const classes = useStyles();
 
     // Darkstore Orders State
@@ -47,14 +47,18 @@ const CurrentOrderCard = ({ driverData, setDriverData, currentOrderSelected }) =
         );
     };
 
-    const handleDeliverRequest = (event) => {
-
+    const handleDeliverRequest = async (event) => {
+        const result = await deliverOrder(driverData.driver.driverCode, driverData.currentOrders[currentOrderSelected].orderCode)
+        if (result)
+            await getDriverData(driverData.driver.driverCode, setDriverData, setError, setDriverLocation)
+        else
+            setError('Failed to pick batch!')
     }
 
     const handleSendRequest = async () => {
         const result = await pickOrders(driverData.driver.driverCode, selectedItems)
         if (result)
-            await getDriverData(driverData.driver.driverCode, setDriverData, setError)
+            await getDriverData(driverData.driver.driverCode, setDriverData, setError, setDriverLocation)
         else
             setError('Failed to pick batch!')
     };

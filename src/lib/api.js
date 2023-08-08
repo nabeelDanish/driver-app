@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseUrl = "http://supply-chain.noondv.com"
 
-export const getDriverData = async (driverCode, setResponseMessage, setError) => {
+export const getDriverData = async (driverCode, setResponseMessage, setError, setDriverLocation) => {
     try {
         const headers = {
             'X-forwarded-user': driverCode,
@@ -14,6 +14,7 @@ export const getDriverData = async (driverCode, setResponseMessage, setError) =>
         // Set the response data to be displayed on the card
         setResponseMessage(response.data);
         setError(null);
+        setDriverLocation({ latitude: response.data?.driver?.location?.latitude, longitude: response.data?.driver?.location?.longitude, })
     } catch (error) {
         console.error('Error fetching driver info:', error);
         setError('Error occurred while fetching driver info.');
@@ -56,6 +57,22 @@ export const pickOrders = async (driverCode, orderCodes) => {
 
         // Simulate the HTTP GET request response
         const response = await axios.post(baseUrl + '/batch/pick', { orderCodes }, { headers });
+
+        return response.status == 200
+    } catch (error) {
+        console.error('Error batch picking:', error);
+        return false
+    }
+}
+
+export const deliverOrder = async (driverCode, orderCode) => {
+    try {
+        const headers = {
+            'X-forwarded-user': driverCode,
+        };
+
+        // Simulate the HTTP GET request response
+        const response = await axios.post(baseUrl + '/order/deliver', { orderCode }, { headers });
 
         return response.status == 200
     } catch (error) {

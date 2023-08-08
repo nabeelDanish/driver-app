@@ -1,0 +1,64 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+.card-2 {
+    display: flex;
+    gap: 1rem;
+}
+
+.card-2 p {
+    font-size: small;
+}
+
+.card-2 div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.emp-code {
+    font-size: x-small;
+}
+
+img {
+    border-radius: 50%;
+    max-width: 8rem;
+}
+
+.label {
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.success {
+    background-color: #04AA6D;
+}
+
+/* Green */
+.info {
+    background-color: #2196F3;
+}
+
+/* Blue */
+.warning {
+    background-color: #ff9800;
+}
+
+/* Orange */
+.danger {
+    background-color: #f44336;
+}
+
+/* Red */
+.other {
+    background-color: #e7e7e7;
+    color: black;
+}
+
+/* Gray */

@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { getDriverData } from '../../lib/api'
-import { camelCaseToCapitalizedWords } from '../../lib/util'
 import { useStyles } from './styles';
-import { MapComponent } from '../../components';
+import { MapComponent, ProfileCard } from '../../components';
 
 const DriverCard = ({ driverCode, setDriverCode, driverData, setDriverData, driverLocation, setDriverLocation }) => {
     const classes = useStyles();
     const [error, setError] = useState(null);
 
     const handleButtonClick = async () => {
-        await getDriverData(driverCode, setDriverData, setError);
+        await getDriverData(driverCode, setDriverData, setError, setDriverLocation);
     };
-
-    useEffect(() => {
-        setDriverLocation({ latitude: driverData?.driver?.location?.latitude, longitude: driverData?.driver?.location?.longitude })
-    }, [driverData])
 
     const renderDriverData = () => {
         if (error) {
@@ -24,16 +19,7 @@ const DriverCard = ({ driverCode, setDriverCode, driverData, setDriverData, driv
         if (driverData && driverData.driver) {
             return (
                 <>
-                    <table className={classes.table}>
-                        <tbody>
-                            {Object.entries(driverData.driver).map(([key, value]) => (
-                                <tr key={key}>
-                                    <td>{camelCaseToCapitalizedWords(key)}</td>
-                                    <td>{JSON.stringify(value)}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <ProfileCard profileData={driverData.driver} />
                     {driverLocation ? <MapComponent driverLocation={driverLocation} /> : ""}
                 </>
             );

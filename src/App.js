@@ -17,19 +17,20 @@ const App = () => {
     useEffect(() => {
         // This function will be called after every render of the component
         const intervalId = setInterval(async () => {
-            if (driverLocation == null)
-                return
-
-            const { latitude, longitude } = getRandomCoordinatesInDubai();
-            await updateDriverLocation(driverCode, { latitude, longitude })
-            setDriverLocation({ latitude: latitude, longitude, longitude })
+            console.log("called!")
+            if (driverLocation != null) {
+                console.log("changing location!")
+                const { latitude, longitude } = getRandomCoordinatesInDubai();
+                await updateDriverLocation(driverCode, { latitude, longitude })
+                setDriverLocation({ latitude: latitude, longitude, longitude })
+            }
         }, 10000);
 
         // Cleanup function: This will be called when the component is unmounted or the dependency array changes
         return () => {
             clearInterval(intervalId);
         };
-    }, []);
+    }, [driverLocation]);
 
 
     // Building Layout
@@ -49,6 +50,7 @@ const App = () => {
                     driverData={driverData}
                     setDriverData={setDriverData}
                     currentOrderSelected={currentOrderSelected}
+                    setDriverLocation={setDriverLocation}
                 />
                 <AllOrders
                     driverData={driverData}

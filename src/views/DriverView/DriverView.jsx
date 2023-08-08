@@ -52,6 +52,7 @@ const DriverView = () => {
                 driverData={driverData}
                 currentOrderSelected={currentOrderSelected}
                 setCurrentOrderSelected={setCurrentOrderSelected}
+                title="Assigned Orders"
             />
         </Grid>
 

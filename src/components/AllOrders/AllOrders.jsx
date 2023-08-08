@@ -2,7 +2,7 @@ import React from 'react';
 import { camelCaseToCapitalizedWords } from '../../lib/util'
 import { useStyles } from './styles';
 
-const AllOrders = ({ driverData, currentOrderSelected, setCurrentOrderSelected }) => {
+const AllOrders = ({ driverData, currentOrderSelected, setCurrentOrderSelected, title }) => {
     const classes = useStyles();
 
     const renderOrder = (index) => {
@@ -42,7 +42,7 @@ const AllOrders = ({ driverData, currentOrderSelected, setCurrentOrderSelected }
 
     return (
         <div className={classes.card}>
-            <h1>Orders Assigned</h1>
+            <h1>{title}</h1>
             {renderAllOrders()}
         </div>
     );

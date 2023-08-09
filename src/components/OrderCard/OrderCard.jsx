@@ -1,43 +1,49 @@
 import './styles.css'
 import { timeAgo } from '../../lib/util'
+import item1 from '../../assets/images/item-1.jpeg'
+import item2 from '../../assets/images/item-2.webp'
 
-const OrderCard = ({ orderData }) => {
+const OrderCard = ({ orderData, index }) => {
+    const statusStyles = {
+        "CONFIRMED": "info",
+        "DELIVERED": "success",
+        "CANCELLED": "danger",
+        "PICKING": "info",
+        "FULFILLED": "info",
+        "DELIVERING": "warning",
+        "UNABLE_TO_DELIVER": "danger"
+    }
+
     return (
-        <div class="card">
-            <table>
-                <tr>
-                    <td>Order Code</td>
-                    <td>{orderData.orderCode}</td>
-                </tr>
-                <tr>
-                    <td>Darkstore Code</td>
-                    <td>{orderData.darkstoreCode}</td>
-                </tr>
-                <tr>
-                    <td>Customer Code</td>
-                    <td>{orderData.customerCode}</td>
-                </tr>
-                <tr>
-                    <td>Batch Code</td>
-                    <td>{orderData.batchCode}</td>
-                </tr>
-                <tr>
-                    <td>Status</td>
-                    <td>{orderData.status}</td>
-                </tr>
-                <tr>
-                    <td>Total Price</td>
-                    <td>{orderData.totalPrice} AED</td>
-                </tr>
-                <tr>
-                    <td>Created At</td>
-                    <td>{timeAgo(orderData.createdAt)}</td>
-                </tr>
-                <tr>
-                    <td>Updated At</td>
-                    <td>{timeAgo(orderData.updatedAt)}</td>
-                </tr>
-            </table>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+            <div style={{ marginRight: '2rem' }}>
+                <p style={{ fontSize: 'medium', fontWeight: 'bold', marginBottom: '2rem' }}>{orderData.orderCode}</p>
+                <p style={{ color: 'gray' }}>Place {timeAgo(orderData.createdAt)}</p>
+            </div>
+            <hr style={{ borderLeft: '1px solid lightgray', height: '4rem' }} />
+            <div style={{ marginLeft: '2rem', display: 'flex', flexDirection: 'column', marginRight: '2rem' }}>
+                <img src={index % 2 == 0 ? item1 : item2} style={{ maxWidth: '4rem' }} />
+                <span class={'label ' + statusStyles[orderData.status]}>{orderData.status}</span>
+            </div>
+            <hr style={{ borderLeft: '1px solid lightgray', height: '4rem' }} />
+            <div style={{ marginLeft: '2rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1rem' }}>
+                    <p>🏗️</p>
+                    <p style={{ fontWeight: 'lighter', fontSize: 'small' }}>{orderData.darkstoreCode}</p>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1rem' }}>
+                    <p>👤</p>
+                    <p style={{ fontWeight: 'lighter', fontSize: 'small' }}>{orderData.customerCode}</p>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1rem' }}>
+                    <p>📦</p>
+                    <p style={{ fontWeight: 'lighter', fontSize: 'small' }}>{orderData.batchCode || 'None'}</p>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1rem' }}>
+                    <p>💲</p>
+                    <p style={{ fontWeight: 'lighter', fontSize: 'small' }}>{orderData.totalPrice}</p>
+                </div>
+            </div>
         </div>
     )
 }

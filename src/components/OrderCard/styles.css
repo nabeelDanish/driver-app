@@ -1,35 +1,33 @@
-.card body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.card {
-    border: 1px solid #ccc;
+.label {
+    color: white;
+    padding: 4px;
     border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    font-size: x-small;
 }
 
-.card h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
+.success {
+    background-color: #04AA6D;
 }
 
-.card table {
-    width: 100%;
+/* Green */
+.info {
+    background-color: #2196F3;
 }
 
-.card td {
-    padding: 8px;
-    border-bottom: 1px solid #ccc;
+/* Blue */
+.warning {
+    background-color: #ff9800;
 }
 
-.card tr:last-child td {
-    border-bottom: none;
+/* Orange */
+.danger {
+    background-color: #f44336;
 }
+
+/* Red */
+.other {
+    background-color: #e7e7e7;
+    color: black;
+}
+
+/* Gray */

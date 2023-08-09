@@ -12,7 +12,7 @@ const AllOrders = ({ orders, currentOrderSelected, setCurrentOrderSelected, titl
                 key={index}
                 onClick={() => setCurrentOrderSelected(index)}
             >
-                <OrderCard orderData={orders[index]} />
+                <OrderCard orderData={orders[index]} index={index} />
             </div>
         );
     }

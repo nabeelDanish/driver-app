@@ -2,15 +2,39 @@ import React, { useState, useEffect } from 'react';
 import { Grid } from '../../layouts';
 import { DriverCard, AllOrders, CurrentOrderCard } from '../../components'
 import { getRandomCoordinatesInDubai } from '../../lib/util';
-import { updateDriverLocation } from '../../lib/api';
+import { getDarkstoreOrders, updateDriverLocation } from '../../lib/api';
 
 const DarkstoreView = () => {
     // Driver State
     const [darkstoreCode, setDarkstoreCode] = useState('');
-    const [darkstoreData, setDarkstoreData] = useState({});
+    const [fulfilledOrders, setFulfilledOrders] = useState([]);
+    const [activeOrders, setActiveOrders] = useState([]);
+    const [completedOrders, setCompletedOrders] = useState([]);
+
 
     // Order State
     const [currentOrderSelected, setCurrentOrderSelected] = useState(0);
+
+    // Fetching Darsktore Data
+    const handleClick = async () => {
+        const allOrders = await getDarkstoreOrders(darkstoreCode);
+
+        const fOrders = allOrders.filter((order) => {
+            return order.status == "CONFIRMED" || order.status == "PICKING" || order.status == "FULFILLED"
+        })
+
+        const aOrders = allOrders.filter((order) => {
+            return order.status == "DELIVERING"
+        })
+
+        const cOrders = allOrders.filter((order) => {
+            return order.status == "DELIVERED" || order.status == "CANCELLED" || order.status == "UNABLE_TO_DELIVER"
+        })
+
+        setFulfilledOrders(fOrders)
+        setActiveOrders(aOrders)
+        setCompletedOrders(cOrders)
+    }
 
     // Building Layout
     return (
@@ -22,25 +46,19 @@ const DarkstoreView = () => {
                     onChange={(e) => setDarkstoreCode(e.target.value)}
                     placeholder="Enter darkstore code"
                 />
-                <button>Get Darkstore</button>
+                <button onClick={handleClick}>Get Darkstore</button>
             </div>
             <Grid>
                 <AllOrders
-                    driverData={darkstoreData}
-                    currentOrderSelected={currentOrderSelected}
-                    setCurrentOrderSelected={setCurrentOrderSelected}
+                    orders={fulfilledOrders}
                     title="Fulfilled"
                 />
                 <AllOrders
-                    driverData={darkstoreData}
-                    currentOrderSelected={currentOrderSelected}
-                    setCurrentOrderSelected={setCurrentOrderSelected}
+                    orders={activeOrders}
                     title="Active"
                 />
                 <AllOrders
-                    driverData={darkstoreData}
-                    currentOrderSelected={currentOrderSelected}
-                    setCurrentOrderSelected={setCurrentOrderSelected}
+                    orders={completedOrders}
                     title="Completed"
                 />
             </Grid>

@@ -49,7 +49,7 @@ const DriverView = () => {
                 setDriverLocation={setDriverLocation}
             />
             <AllOrders
-                driverData={driverData}
+                orders={driverData?.currentOrders}
                 currentOrderSelected={currentOrderSelected}
                 setCurrentOrderSelected={setCurrentOrderSelected}
                 title="Assigned Orders"

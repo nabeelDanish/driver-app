@@ -1,8 +1,8 @@
 import React from 'react';
-import { camelCaseToCapitalizedWords } from '../../lib/util'
+import { OrderCard } from '../../components'
 import { useStyles } from './styles';
 
-const AllOrders = ({ driverData, currentOrderSelected, setCurrentOrderSelected, title }) => {
+const AllOrders = ({ orders, currentOrderSelected, setCurrentOrderSelected, title }) => {
     const classes = useStyles();
 
     const renderOrder = (index) => {
@@ -12,26 +12,17 @@ const AllOrders = ({ driverData, currentOrderSelected, setCurrentOrderSelected, 
                 key={index}
                 onClick={() => setCurrentOrderSelected(index)}
             >
-                <table className={classes.table}>
-                    <tbody>
-                        {Object.entries(driverData.currentOrders[index]).map(([key, value]) => (
-                            <tr key={key}>
-                                <td>{camelCaseToCapitalizedWords(key)}</td>
-                                <td>{JSON.stringify(value)}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <OrderCard orderData={orders[index]} />
             </div>
         );
     }
 
     const renderAllOrders = () => {
-        if (driverData && driverData.currentOrders && driverData.currentOrders.length) {
+        if (orders && orders.length) {
             return (
                 <>
                     {
-                        driverData.currentOrders.map((element, index) => renderOrder(index))
+                        orders.map((element, index) => renderOrder(index))
                     }
                 </>
             );

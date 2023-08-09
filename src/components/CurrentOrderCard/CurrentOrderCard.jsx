@@ -35,7 +35,13 @@ const CurrentOrderCard = ({ driverData, setDriverData, currentOrderSelected, set
 
     useEffect(() => {
         if (driverData && driverData.driver && driverData.driver.darkstoreCode)
-            getDarkstoreOrders(driverData.driver.darkstoreCode, setItems)
+            getDarkstoreOrders(driverData.driver.darkstoreCode)
+                .then((currentOrders) => {
+                    const filteredOrders = currentOrders.filter((darkstore) => {
+                        return darkstore.status == "FULFILLED"
+                    })
+                    setItems(filteredOrders)
+                })
     }, [driverData]);
 
     const handleCheckboxChange = (event) => {

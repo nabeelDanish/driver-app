@@ -38,14 +38,14 @@ export const updateDriverLocation = async (driverCode, location) => {
     }
 }
 
-export const getDarkstoreOrders = async (darkstoreCode, setItems) => {
+export const getDarkstoreOrders = async (darkstoreCode) => {
     try {
         const response = await axios.get(baseUrl + `/darkstore/${darkstoreCode}/orders`);
         const data = response.data;
-        setItems(data.currentOrders); // Update the items state with the fetched data
+        return data.currentOrders
     } catch (error) {
         console.error('Error fetching items:', error);
-        return false
+        return null
     }
 }
 

@@ -37,7 +37,7 @@ const CurrentOrderCard = ({ driverData, setDriverData, currentOrderSelected, set
         if (driverData && driverData.driver && driverData.driver.darkstoreCode)
             getDarkstoreOrders(driverData.driver.darkstoreCode)
                 .then((currentOrders) => {
-                    const filteredOrders = currentOrders.filter((darkstore) => {
+                    let filteredOrders = currentOrders.filter((darkstore) => {
                         return darkstore.status == "FULFILLED"
                     })
                     setItems(filteredOrders)

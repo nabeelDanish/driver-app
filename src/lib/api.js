@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { productImages } from '../assets/images'
+
 
 const baseUrl = "http://supply-chain.noondv.com"
 
@@ -10,11 +12,18 @@ export const getDriverData = async (driverCode, setResponseMessage, setError, se
 
         // Simulate the HTTP GET request response
         const response = await axios.get(baseUrl + '/driver', { headers });
+        const data = response.data
+
+        // Add Product Images
+        data.currentOrders = data.currentOrders.map((order, index) => {
+            order.image = index % productImages.length
+            return order
+        })
 
         // Set the response data to be displayed on the card
-        setResponseMessage(response.data);
+        setResponseMessage(data);
         setError(null);
-        setDriverLocation({ latitude: response.data?.driver?.location?.latitude, longitude: response.data?.driver?.location?.longitude, })
+        setDriverLocation({ latitude: data?.driver?.location?.latitude, longitude: data?.driver?.location?.longitude, })
     } catch (error) {
         console.error('Error fetching driver info:', error);
         setError('Error occurred while fetching driver info.');
@@ -42,7 +51,10 @@ export const getDarkstoreOrders = async (darkstoreCode) => {
     try {
         const response = await axios.get(baseUrl + `/darkstore/${darkstoreCode}/orders`);
         const data = response.data;
-        return data.currentOrders
+        return data.currentOrders.map((order, index) => {
+            order.image = index % productImages.length
+            return order
+        })
     } catch (error) {
         console.error('Error fetching items:', error);
         return null

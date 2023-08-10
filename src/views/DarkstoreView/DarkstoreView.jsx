@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Grid } from '../../layouts';
-import { DriverCard, AllOrders, CurrentOrderCard } from '../../components'
-import { getRandomCoordinatesInDubai } from '../../lib/util';
-import { getDarkstoreOrders, updateDriverLocation } from '../../lib/api';
+import { AllOrders } from '../../components'
+import { getDarkstoreOrders } from '../../lib/api';
+import { productImages } from '../../assets/images'
 
 const DarkstoreView = () => {
     // Driver State

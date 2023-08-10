@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles(theme => ({
     navbar: {
         backgroundColor: '#f4df08',
         color: 'dark-gray',
@@ -8,6 +8,10 @@ export const useStyles = makeStyles({
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '1rem',
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '-webkit-fill-available'
     },
     logo: {
         fontSize: '1.5rem',
@@ -16,6 +20,10 @@ export const useStyles = makeStyles({
     navItems: {
         listStyle: 'none',
         display: 'flex',
+
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+        },
     },
     navItem: {
         marginLeft: '1rem',
@@ -24,4 +32,4 @@ export const useStyles = makeStyles({
             textDecoration: 'underline',
         },
     },
-});
+}));

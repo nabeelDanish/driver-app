@@ -10,10 +10,12 @@ const App = () => {
         <div>
             <Router>
                 <Navbar />
-                <Routes>
-                    <Route path="/" exact element={<DriverView />} />
-                    <Route path="/darkstore" exact element={<DarkstoreView />} />
-                </Routes>
+                <div style={{ marginTop: '120px' }}>
+                    <Routes>
+                        <Route path="/" exact element={<DriverView />} />
+                        <Route path="/darkstore" exact element={<DarkstoreView />} />
+                    </Routes>
+                </div>
             </Router>
         </div>
     );

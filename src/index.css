@@ -64,6 +64,7 @@ textarea {
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 16px;
+    width: 100%;
 }
 
 /* Shadows (customize as needed) */
@@ -107,4 +108,39 @@ ul li a:hover {
 
 ul li a.active {
     color: #00a8ff;
+}
+
+@media (max-width: 600px) {
+
+    button,
+    input,
+    textarea,
+    .card {
+        padding: 6px;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .navItems {
+        display: none;
+    }
+
+    .mobileMenuButton {
+        display: block;
+    }
+
+    button {
+        width: auto;
+    }
 }

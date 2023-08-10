@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.15rem;
+    width: 100%;
 }
 
 .card-2 {
@@ -64,3 +65,26 @@ img {
 }
 
 /* Gray */
+@media (max-width: 600px) {
+    img {
+        max-width: 4rem;
+    }
+
+    .card {
+        width: 100%
+    }
+
+    .card-2 {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .card-2 div {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.35rem;
+        justify-content: space-between;
+    }
+}

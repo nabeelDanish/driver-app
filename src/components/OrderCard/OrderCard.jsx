@@ -23,33 +23,33 @@ const OrderCard = ({ orderData }) => {
     const productImages = [item1, item2, item2, item3, item4, item5, item6, item7]
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            <div style={{ marginRight: '2rem' }}>
-                <p style={{ fontSize: 'medium', fontWeight: 'bold', marginBottom: '2rem' }}>{orderData.orderCode}</p>
+        <div class="order-card">
+            <div class="first">
+                <p class="first-order-code">{orderData.orderCode}</p>
                 <p style={{ color: 'gray' }}>Place {timeAgo(orderData.createdAt)}</p>
             </div>
-            <hr style={{ borderLeft: '1px solid lightgray', height: '4rem' }} />
-            <div style={{ marginLeft: '2rem', display: 'flex', flexDirection: 'column', marginRight: '2rem' }}>
+            <hr class="vertical-divider" />
+            <div class="second">
                 <img src={productImages[orderData.image]} style={{ maxWidth: '4rem' }} />
                 <span class={'label ' + statusStyles[orderData.status]}>{orderData.status}</span>
             </div>
-            <hr style={{ borderLeft: '1px solid lightgray', height: '4rem' }} />
-            <div style={{ marginLeft: '2rem' }}>
-                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1rem' }}>
+            <hr class="vertical-divider" />
+            <div class="third">
+                <div class="details">
                     <p>🏗️</p>
-                    <p style={{ fontWeight: 'lighter', fontSize: 'small' }}>{orderData.darkstoreCode}</p>
+                    <p class="details-text">{orderData.darkstoreCode}</p>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1rem' }}>
+                <div class="details">
                     <p>👤</p>
-                    <p style={{ fontWeight: 'lighter', fontSize: 'small' }}>{orderData.customerCode}</p>
+                    <p class="details-text">{orderData.customerCode}</p>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1rem' }}>
+                <div class="details">
                     <p>📦</p>
-                    <p style={{ fontWeight: 'lighter', fontSize: 'small' }}>{orderData.batchCode || 'None'}</p>
+                    <p class="details-text">{orderData.batchCode || 'None'}</p>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1rem' }}>
+                <div class="details">
                     <p>💲</p>
-                    <p style={{ fontWeight: 'lighter', fontSize: 'small' }}>{orderData.totalPrice}</p>
+                    <p class="details-text">{orderData.totalPrice}</p>
                 </div>
             </div>
         </div>

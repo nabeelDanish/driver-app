@@ -17,6 +17,7 @@ export const useStyles = makeStyles({
         border: '1px solid #ccc',
         borderRadius: '4px',
         padding: '1rem',
+        width: '95%',
 
         margin: '0 auto',
         display: 'flex',

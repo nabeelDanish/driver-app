@@ -52,14 +52,20 @@ const DarkstoreView = () => {
                 <AllOrders
                     orders={fulfilledOrders}
                     title="Fulfilled"
+                    currentOrderSelected={null}
+                    setCurrentOrderSelected={null}
                 />
                 <AllOrders
                     orders={activeOrders}
                     title="Active"
+                    currentOrderSelected={null}
+                    setCurrentOrderSelected={null}
                 />
                 <AllOrders
                     orders={completedOrders}
                     title="Completed"
+                    currentOrderSelected={null}
+                    setCurrentOrderSelected={null}
                 />
             </Grid>
         </>

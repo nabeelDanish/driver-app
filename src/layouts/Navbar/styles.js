@@ -28,8 +28,9 @@ export const useStyles = makeStyles(theme => ({
     navItem: {
         marginLeft: '1rem',
         cursor: 'pointer',
+        height: '100%',
         '&:hover': {
-            textDecoration: 'underline',
+            backgroundColor: '#f4df10'
         },
     },
 }));

@@ -26,7 +26,8 @@ const OrderCard = ({ orderData }) => {
         <div class="order-card">
             <div class="first">
                 <p class="first-order-code">{orderData.orderCode}</p>
-                <p style={{ color: 'gray' }}>Place {timeAgo(orderData.createdAt)}</p>
+                <p style={{ fontSize: 'xx-small', marginBottom: '1rem' }}>{orderData.address}</p>
+                <p style={{ color: 'gray' }}>Placed {timeAgo(orderData.createdAt)}</p>
             </div>
             <hr class="vertical-divider" />
             <div class="second">

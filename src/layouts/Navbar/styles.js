@@ -11,7 +11,8 @@ export const useStyles = makeStyles(theme => ({
         position: 'fixed',
         top: '0',
         left: '0',
-        width: '-webkit-fill-available'
+        width: '-webkit-fill-available',
+        zIndex: '1'
     },
     logo: {
         fontSize: '1.5rem',

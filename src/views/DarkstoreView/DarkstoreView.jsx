@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
 import { Grid } from '../../layouts';
-import { AllOrders } from '../../components'
-import { getDarkstoreOrders } from '../../lib/api';
-import { productImages } from '../../assets/images'
+import { AllOrders, DarkstoreCard } from '../../components'
+import { getDarkstoreOrders, getDarkstoreData } from '../../lib/api';
 
 const DarkstoreView = () => {
-    // Driver State
+    // Darkstore State
     const [darkstoreCode, setDarkstoreCode] = useState('');
+    const [darkstoreData, setDarkstoreData] = useState(null);
     const [fulfilledOrders, setFulfilledOrders] = useState([]);
     const [activeOrders, setActiveOrders] = useState([]);
     const [completedOrders, setCompletedOrders] = useState([]);
 
-
-    // Order State
-    const [currentOrderSelected, setCurrentOrderSelected] = useState(0);
-
-    // Fetching Darsktore Data
+    // Fetching Darkstore Data
     const handleClick = async () => {
         const allOrders = await getDarkstoreOrders(darkstoreCode);
+        const darkstore = await getDarkstoreData(darkstoreCode);
 
         const fOrders = allOrders.filter((order) => {
             return order.status == "CONFIRMED" || order.status == "PICKING" || order.status == "FULFILLED"
@@ -34,6 +31,7 @@ const DarkstoreView = () => {
         setFulfilledOrders(fOrders)
         setActiveOrders(aOrders)
         setCompletedOrders(cOrders)
+        setDarkstoreData(darkstore)
     }
 
     const emptyFunction = () => { }
@@ -50,6 +48,7 @@ const DarkstoreView = () => {
                 />
                 <button onClick={handleClick}>Get Darkstore</button>
             </div>
+            <DarkstoreCard darkstore={darkstoreData} />
             <Grid>
                 <AllOrders
                     orders={fulfilledOrders}

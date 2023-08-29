@@ -72,6 +72,17 @@ export const getDarkstoreData = async (darkstoreCode) => {
     }
 }
 
+export const getDarkstoreLoadFactor = async (darkstoreCode) => {
+    try {
+        const response = await axios.get(baseUrl + `/darkstore/${darkstoreCode}/load-factor`);
+        const data = response.data;
+        return data?.loadFactor
+    } catch (error) {
+        console.error('Error fetching darkstore:', error);
+        return 0
+    }
+}
+
 export const pickOrders = async (driverCode, orderCodes) => {
     try {
         const headers = {

@@ -110,7 +110,23 @@ export const deliverOrder = async (driverCode, orderCode) => {
 
         return response.status == 200
     } catch (error) {
-        console.error('Error batch picking:', error);
+        console.error('Error delivering order: ', error);
+        return false
+    }
+}
+
+export const unableToDeliver = async (driverCode, orderCode, comment) => {
+    try {
+        const headers = {
+            'X-forwarded-user': driverCode,
+        };
+
+        // Simulate the HTTP GET request response
+        const response = await axios.post(baseUrl + '/driver/unable-to-deliver', { orderCode, comment }, { headers });
+
+        return response.status == 200
+    } catch (error) {
+        console.error('Error unable to deliver request: ', error);
         return false
     }
 }

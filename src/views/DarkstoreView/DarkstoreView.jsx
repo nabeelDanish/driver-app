@@ -36,6 +36,8 @@ const DarkstoreView = () => {
         setCompletedOrders(cOrders)
     }
 
+    const emptyFunction = () => { }
+
     // Building Layout
     return (
         <>
@@ -53,19 +55,19 @@ const DarkstoreView = () => {
                     orders={fulfilledOrders}
                     title="Fulfilled"
                     currentOrderSelected={null}
-                    setCurrentOrderSelected={null}
+                    setCurrentOrderSelected={emptyFunction}
                 />
                 <AllOrders
                     orders={activeOrders}
                     title="Active"
                     currentOrderSelected={null}
-                    setCurrentOrderSelected={null}
+                    setCurrentOrderSelected={emptyFunction}
                 />
                 <AllOrders
                     orders={completedOrders}
                     title="Completed"
                     currentOrderSelected={null}
-                    setCurrentOrderSelected={null}
+                    setCurrentOrderSelected={emptyFunction}
                 />
             </Grid>
         </>
